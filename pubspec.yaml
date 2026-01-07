@@ -51,10 +51,11 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-  uses-material-design: true
-
+  uses-material-design: true  # Correctement indenté sous la clé "flutter"
   assets:
-    - assets/images/
+    - assets/images/magazineInfo.jpg
+    - assets/images/rubriq1.jpg
+    - assets/images/rubriq2.jpg
 
 
   # To add assets to your application, add an assets section, like this:
