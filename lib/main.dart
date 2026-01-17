@@ -1,37 +1,58 @@
+import 'ui/redacteur_interface.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MonAppli());
+  runApp(const MonApplication());
 }
 
-class MonAppli extends StatelessWidget {
-  const MonAppli({super.key});
+
+class MonApplication extends StatelessWidget {
+  const MonApplication({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: pageAccueil(),
+      home: PageAccueil(),
     );
   }
 }
 
-class pageAccueil extends StatelessWidget {
-  const pageAccueil({super.key});
+class PageAccueil extends StatelessWidget {
+  const PageAccueil({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: const [
-          Image(
-            image: AssetImage('assets/images/magazineInfo.jpg'),
-          ),
-          PartieTitre(),
-          PartieTexte(),
-          PartieIcone(),
-          PartieRubrique(),
-        ],
+      appBar: AppBar(
+        title: const Text('Magazine Infos'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Image(
+              image: AssetImage('assets/images/magazineInfo.jpg'),
+            ),
+            const PartieTitre(),
+            const PartieTexte(),
+            const PartieIcone(),
+            const PartieRubrique(),
+
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RedacteurInterface(),
+                  ),
+                );
+              },
+              child: const Text('Gestion des rédacteurs'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -92,19 +113,15 @@ class PartieIcone extends StatelessWidget {
   const PartieIcone({super.key});
 
   Widget _buildAction(IconData icon, String label) {
-    return Container(
-      child: Column(
-        children: [
-          Icon(icon, color: Colors.pink),
-          const SizedBox(height: 5),
-          Text(
-            label,
-            style: const TextStyle(
-              color: Colors.pink,
-            ),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Icon(icon, color: Colors.pink),
+        const SizedBox(height: 5),
+        Text(
+          label,
+          style: const TextStyle(color: Colors.pink),
+        ),
+      ],
     );
   }
 
